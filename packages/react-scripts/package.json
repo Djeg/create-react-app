@@ -1,8 +1,8 @@
 {
-  "name": "react-scripts",
-  "version": "1.1.1",
-  "description": "Configuration and scripts for Create React App.",
-  "repository": "facebookincubator/create-react-app",
+  "name": "i24news-react-scripts",
+  "version": "1.2.0",
+  "description": "i24NEWS configuration and scripts for Create React App.",
+  "repository": "Djeg/create-react-app",
   "license": "MIT",
   "engines": {
     "node": ">=6"
@@ -60,6 +60,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "chokidar": "^2.0.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
