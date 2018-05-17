@@ -46,25 +46,19 @@ const command = `cd ${paths.appPath} && npm run build-ssr && npm run server`
 const execBuilder = () => {
   const builder = exec(command)
 
-  builder.stdout.on('data', data => 
+  builder.stdout.on('data', data =>
     String(data)
       .split('\n')
       .filter(line => !!line)
       .map(line => line.trim())
-      .map(line =>
-        console.log(chalk.gray(`> stdout: ${line}`));
-      )
-  )
+      .map(line => console.log(chalk.gray(`> stdout: ${line}`))))
 
-  builder.stderr.on('data', data => 
+  builder.stderr.on('data', data =>
     String(data)
       .split('\n')
       .filter(line => !!line)
       .map(line => line.trim())
-      .map(line => 
-        console.log(chalk.red(`> stderr: ${line}`));
-      )
-  )
+      .map(line => console.log(chalk.red(`> stderr: ${line}`))))
 
   return builder;
 }
