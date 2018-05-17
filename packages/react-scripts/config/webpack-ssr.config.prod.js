@@ -9,7 +9,7 @@ module.exports = {
   entry: path.resolve(paths.appSrc, 'ssr', 'index.js'),
   output: {
     ...config.output,
-    path: path.resolve(paths.appBin),
-    filename: 'server.js',
+    path: path.resolve(paths.appSsr),
+    filename: 'index.js',
   },
 }
