@@ -26,7 +26,7 @@ const paths = require('../config/paths.js');
 const fs = require('fs');
 const chalk = require('chalk');
 const chokidar = require('chokidar')
-const { spawn } = require('child_process')
+const { exec } = require('child_process')
 
 console.log(chalk.gray(`
 Watch the entire src/ folder. If any changes are made, the SSR app will be
@@ -41,20 +41,21 @@ $ yarn run build-ssr && yarn run server
 console.log(chalk.yellow(`Starting SSR watcher on src/ directory`))
 
 const watcher = chokidar.watch(paths.appSrc);
-const builder = spawn('cd', `${paths.appPath} && npm run build-ssr && npm run server`.split(' '));
+const command = `cd ${paths.appPath} && npm run build-ssr && npm run server`
 
-builder.stdout.on('data', data => {
-  console.log(chalk.gray(`> ${data}`));
-})
+const execBuilder = () => {
+  const builder = exec(command)
 
-builder.stderr.on('data', (data) => {
-  console.log(chalk.red(data));
-});
+  builder.stdout.on('data', data => {
+    console.log(chalk.gray(`> stdout: ${data}`));
+  })
 
-builder.on('close', code => {
-  // restart the the process:
-  builder = spawn(`${reactScript} build-ssr && ${reactScript} server`);
-})
+  builder.stderr.on('data', data => {
+    console.log(chalk.red(`> stderr: ${data}`));
+  });
+}
+
+let builder = execBuilder();
 
 watcher.on('all', path => {
   console.log(chalk.gray(`
@@ -62,5 +63,7 @@ Restarting SSR application...
 `));
 
   builder.kill();
+
+  builder = execBuilder();
 })
 
