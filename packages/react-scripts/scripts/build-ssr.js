@@ -44,9 +44,8 @@ stats:
     return process.exit(1);
   }
 
-  console.log(chalk.green(`
-Compilation finished :-°.
-
+  console.log(chalk.green(`Compilation finished :-°.`));
+  console.log(chalk.gray(`
 You can now run an http server for the SSR rendering by running:
 
 $ yarn run server

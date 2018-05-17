@@ -53,7 +53,7 @@ try {
   console.log("\n");
   console.log(chalk.cyan('=== STACK TRACE ==='));
   console.log("\n");
-  console.log(chalk.grey(error.stack));
+  console.log(chalk.gray(error.stack));
 
   return process.exit(1);
 }
