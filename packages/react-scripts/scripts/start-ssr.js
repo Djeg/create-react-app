@@ -27,6 +27,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 const chokidar = require('chokidar')
 const reactScript = path.resolve(__dirname, '..', 'bin', 'react-scripts.js');
+const { spawn } = require('child_process')
 
 console.log(chalk.gray(`
 Watch the entire src/ folder. If any changes are made, the SSR app will be
