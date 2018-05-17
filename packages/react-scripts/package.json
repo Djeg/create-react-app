@@ -1,8 +1,8 @@
 {
-  "name": "react-scripts",
-  "version": "1.1.0",
-  "description": "Configuration and scripts for Create React App.",
-  "repository": "facebook/create-react-app",
+  "name": "i24news-react-scripts",
+  "version": "1.1.1",
+  "description": "i24NEWS configuration and scripts for Create React App.",
+  "repository": "Djeg/create-react-app",
   "license": "MIT",
   "engines": {
     "node": ">=6"
@@ -31,11 +31,11 @@
     "babel-plugin-named-asset-import": "^0.1.0",
     "babel-preset-react-app": "^3.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
-    "chalk": "2.3.0",
-    "css-loader": "0.28.9",
-    "dotenv": "5.0.0",
+    "chalk": "1.1.3",
+    "css-loader": "0.28.7",
+    "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "4.15.0",
+    "eslint": "4.10.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
     "eslint-plugin-flowtype": "2.41.0",
@@ -71,11 +71,12 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "chokidar": "^2.0.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "optionalDependencies": {
-    "fsevents": "1.2.0"
+    "fsevents": "^1.1.3"
   },
   "browserslist": {
     "development": [
