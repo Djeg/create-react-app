@@ -26,7 +26,6 @@ const paths = require('../config/paths.js');
 const fs = require('fs');
 const chalk = require('chalk');
 const chokidar = require('chokidar')
-const reactScript = path.resolve(__dirname, '..', 'bin', 'react-scripts.js');
 const { spawn } = require('child_process')
 
 console.log(chalk.gray(`
@@ -42,7 +41,7 @@ $ yarn run build-ssr && yarn run server
 console.log(chalk.yellow(`Starting SSR watcher on src/ directory`))
 
 const watcher = chokidar.watch(paths.appSrc);
-const builder = spawn(`${reactScript} build-ssr && ${reactScript} server`);
+const builder = spawn(`cd ${paths.appPath} && npm run build-ssr && npm run server`);
 
 builder.on('data', data => {
   console.log(`start-ssr: ${data}`);
