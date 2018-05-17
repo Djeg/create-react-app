@@ -66,7 +66,7 @@ const execBuilder = () => {
 let builder = execBuilder();
 
 // make sure to kill the sub process when this process exit:
-process.on('beforeExit' () => builder.kill('SIGKILL'))
+process.on('beforeExit', () => builder.kill('SIGKILL'))
 
 watcher.on('ready', () => {
   console.log(chalk.cyan('Watching src/ for changes'));
