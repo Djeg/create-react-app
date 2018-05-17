@@ -53,6 +53,8 @@ const execBuilder = () => {
   builder.stderr.on('data', data => {
     console.log(chalk.red(`> stderr: ${data}`));
   });
+
+  return builder;
 }
 
 let builder = execBuilder();
