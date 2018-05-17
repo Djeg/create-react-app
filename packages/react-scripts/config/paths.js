@@ -53,6 +53,7 @@ module.exports = {
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
+  appBin: resolveApp('bin'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveApp('src/index.js'),
   appPackageJson: resolveApp('package.json'),
@@ -61,6 +62,7 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  serverScriptPath: resolveApp('bin/server.js'),
 };
 
 let checkForMonorepo = true;
@@ -75,6 +77,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
+  appBin: resolveApp('bin'),
   appIndexJs: resolveApp('src/index.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
@@ -85,6 +88,7 @@ module.exports = {
   // These properties only exist before ejecting:
   ownPath: resolveOwn('.'),
   ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3
+  serverScriptPath: resolveApp('bin/server.js'),
 };
 
 // detect if template should be used, ie. when cwd is react-scripts itself
@@ -100,6 +104,7 @@ if (useTemplate) {
     appBuild: resolveOwn('../../build'),
     appPublic: resolveOwn('template/public'),
     appHtml: resolveOwn('template/public/index.html'),
+    appBin: resolveApp('bin'),
     appIndexJs: resolveOwn('template/src/index.js'),
     appPackageJson: resolveOwn('package.json'),
     appSrc: resolveOwn('template/src'),
@@ -110,6 +115,7 @@ if (useTemplate) {
     // These properties only exist before ejecting:
     ownPath: resolveOwn('.'),
     ownNodeModules: resolveOwn('node_modules'),
+    serverScriptPath: resolveApp('bin/server.js'),
   };
 }
 // @remove-on-eject-end
