@@ -1,8 +1,8 @@
 {
-  "name": "react-scripts",
+  "name": "i24-react-scripts",
   "version": "1.1.0",
-  "description": "Configuration and scripts for Create React App.",
-  "repository": "facebook/create-react-app",
+  "description": "I24News configuration and scripts for Create React App.",
+  "repository": "Djeg/create-react-app",
   "license": "MIT",
   "engines": {
     "node": ">=6"

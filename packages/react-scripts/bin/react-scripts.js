@@ -26,6 +26,7 @@ const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
 switch (script) {
   case 'build':
+  case 'build-ssr':
   case 'eject':
   case 'start':
   case 'test': {
