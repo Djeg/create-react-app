@@ -41,11 +41,15 @@ $ yarn run build-ssr && yarn run server
 console.log(chalk.yellow(`Starting SSR watcher on src/ directory`))
 
 const watcher = chokidar.watch(paths.appSrc);
-const builder = spawn(`cd ${paths.appPath} && npm run build-ssr && npm run server`);
+const builder = spawn('cd', `${paths.appPath} && npm run build-ssr && npm run server`.split(' '));
 
-builder.on('data', data => {
-  console.log(`start-ssr: ${data}`);
+builder.stdout.on('data', data => {
+  console.log(chalk.gray(`> ${data}`));
 })
+
+builder.stderr.on('data', (data) => {
+  console.log(chalk.red(data));
+});
 
 builder.on('close', code => {
   // restart the the process:
