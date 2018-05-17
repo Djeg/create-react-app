@@ -46,26 +46,40 @@ const command = `cd ${paths.appPath} && npm run build-ssr && npm run server`
 const execBuilder = () => {
   const builder = exec(command)
 
-  builder.stdout.on('data', data => {
-    console.log(chalk.gray(`> stdout: ${data}`));
-  })
+  builder.stdout.on('data', data => 
+    String(data)
+      .split('\n')
+      .filter(line => !!line)
+      .map(line => line.trim())
+      .map(line =>
+        console.log(chalk.gray(`> stdout: ${line}`));
+      )
+  )
 
-  builder.stderr.on('data', data => {
-    console.log(chalk.red(`> stderr: ${data}`));
-  });
+  builder.stderr.on('data', data => 
+    String(data)
+      .split('\n')
+      .filter(line => !!line)
+      .map(line => line.trim())
+      .map(line => 
+        console.log(chalk.red(`> stderr: ${line}`));
+      )
+  )
 
   return builder;
 }
 
 let builder = execBuilder();
 
-watcher.on('all', path => {
-  console.log(chalk.gray(`
-Restarting SSR application...
-`));
+watcher.on('ready', () => {
+  console.log(chalk.cyan('Watching src/ for changes'));
 
-  builder.kill();
+  watcher.on('all', () => {
+    console.log(chalk.yellow('Restarting SSR server..'));
 
-  builder = execBuilder();
+    builder.kill('SIGKILL');
+
+    builder = execBuilder();
+  })
 })
 
