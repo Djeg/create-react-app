@@ -21,6 +21,7 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
+const path = require('path')
 const paths = require('../config/paths.js');
 const fs = require('fs');
 const chalk = require('chalk');
