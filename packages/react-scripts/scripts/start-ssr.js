@@ -74,7 +74,7 @@ watcher.on('ready', () => {
   watcher.on('all', () => {
     console.log(chalk.yellow('Restarting SSR server..'));
 
-    builder.kill('SIGKILL');
+    builder.kill('SIGTERM');
 
     builder = execBuilder();
   })
